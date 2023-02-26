@@ -1,1 +1,2 @@
 pandas==1.5.3
+jproperties==2.1.1

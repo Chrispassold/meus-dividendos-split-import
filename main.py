@@ -2,9 +2,14 @@ import math
 import os
 
 import pandas as pd
+from jproperties import Properties
 
-FULL_MOVIMENTS_CSV = "D:/Projetos/python/csv-meus-dividendos/full.csv"
-OUTPUT_PREFIX_CSV = "D:/Projetos/python/csv-meus-dividendos/output"
+configs = Properties()
+with open('local.properties', 'rb') as config_file:
+    configs.load(config_file)
+
+FULL_MOVIMENTS_CSV = configs.get("FULL_RECORDS_CSV").data
+OUTPUT_PREFIX_CSV = "./output"
 SPLIT_AFTER_N_ITEMS = 80
 
 full_csv = pd.read_csv(FULL_MOVIMENTS_CSV, delimiter=";", decimal=",", encoding="iso-8859-1", index_col=False)

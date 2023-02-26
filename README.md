@@ -18,6 +18,10 @@
 3. Criar um arquivo na raiz do projeto chamado `local.properties` com o conteudo abaixo:
     ```properties
     FULL_RECORDS_CSV=caminho/para/seu/arquivo/com/todas/movimentacoes
+
+    #configuracoes opcionais
+    READ_DELIMITER_CSV=; 
+    READ_DECIMAL_CSV=,
     ```
 
 4. Por fim, executar o comando `python -u ./main.py`, o comando dividirá o csv completo em N partes para que seja possível importar no site, os arquivos estarão em sequencia na pasta `./output`.

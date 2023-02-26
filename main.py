@@ -12,10 +12,10 @@ FULL_MOVIMENTS_CSV = configs.get("FULL_RECORDS_CSV").data
 OUTPUT_PREFIX_CSV = "./output"
 SPLIT_AFTER_N_ITEMS = 80
 
-DELIMITER = ";" if configs.get("READ_DELIMITER_CSV").data is None else configs.get("READ_DELIMITER_CSV").data
-DECIMAL = "," if configs.get("READ_DECIMAL_CSV").data is None else configs.get("READ_DECIMAL_CSV").data
+DELIMITER = ";" if configs.get("READ_DELIMITER_CSV") is None else configs.get("READ_DELIMITER_CSV").data
+DECIMAL = "," if configs.get("READ_DECIMAL_CSV") is None else configs.get("READ_DECIMAL_CSV").data
 
-full_csv = pd.read_csv(FULL_MOVIMENTS_CSV, delimiter=DELIMITER, decimal=DECIMAL, encoding="iso-8859-1", index_col=False)
+full_csv = pd.read_csv(FULL_MOVIMENTS_CSV, delimiter=DELIMITER, decimal=DECIMAL, encoding="iso-8859-1", index_col=False, engine="python")
 amount_of_lines = len(full_csv)
 amount_of_output_files = min(math.ceil(amount_of_lines/SPLIT_AFTER_N_ITEMS), amount_of_lines)
 
